@@ -7,3 +7,4 @@
 - React.js
 - Tailwind Css
 - Shadcn UI
+- Zod
