@@ -8,7 +8,6 @@ const Footer = () => {
   return (
     <div className="flex justify-around flex-col gap-2 sm:gap-0 sm:flex-row bg-black py-5 items-center ">
         <div className=" flex items-center gap-3 text-2xl font-semibold">
-            <FaPenNib color='white'/>
             <p className="text-white">
                 {publication.name}
             </p>

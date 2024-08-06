@@ -1,21 +1,23 @@
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 export const HoverEffect = ({
   items,
   className,
+  menu,
 }: {
   items: {
-    title: string;
-    description: string;
-    link: string;
-    img: string;
-    category: string;
+    _id: string
+    title: string
+    description: string
+    img: StaticImageData
+    category: string
   }[];
   className?: string;
+  menu?: string;
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -26,7 +28,9 @@ export const HoverEffect = ({
         className
       )}
     >
-      {items.map((item, idx) => (
+      {items.filter((item) =>
+        menu === "All" ? true : item.category === menu
+      ).map((item, idx) => (
         <Link
           href={item?.link}
           key={item?.link}
@@ -52,9 +56,9 @@ export const HoverEffect = ({
             )}
           </AnimatePresence>
           <Card>
-            <Image src={item.img} width={1600}  height={840} className="bg-slate-100 h-[150px] w-full rounded-md scale-110 -translate-y-2 " alt="" />
+            <Image src={item.img} width={1600} height={840} className=" object-cover bg-slate-100 h-[150px] w-full rounded-md scale-110 -translate-y-2 " alt="" />
             <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description.slice(0, 100)} {item.description.length > 100 ? "...":""}</CardDescription>
+            <CardDescription>{item.description.slice(0, 100)} {item.description.length > 100 ? "..." : ""}</CardDescription>
             <CardCategory>{item.category}</CardCategory>
           </Card>
         </Link>
@@ -97,20 +101,20 @@ export const CardTitle = ({
   );
 };
 export const CardCategory = ({
-    className,
-    children,
-  }: {
-    className?: string;
-    children: React.ReactNode;
-  }) => {
-    return (
-        <div className="w-fit">
-            <h2 className={cn("text-zinc-100 bg-black px-2 rounded-md font-bold tracking-wide mt-4", className)}>
-                {children}
-            </h2>
-        </div>
-    );
-  };
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) => {
+  return (
+    <div className="w-fit">
+      <h6 className={cn("text-zinc-100 bg-black px-2 rounded-md font-bold tracking-wide mt-4", className)}>
+        {children}
+      </h6>
+    </div>
+  );
+};
 export const CardDescription = ({
   className,
   children,
