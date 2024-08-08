@@ -2,16 +2,13 @@
 
 import { publication } from '@/data';
 import React, { useState } from 'react'
-import { FaBlog, FaHome, FaPenNib } from "react-icons/fa";
 import { Button } from './ui/button';  
 import Link from 'next/link';
-import { IconArrowRight, IconMenu2, IconX } from "@tabler/icons-react";
+import { IconMenu2, IconX } from "@tabler/icons-react";
 import { AnimatePresence, motion } from 'framer-motion';
-import { SidebarLink } from './ui/sidebar';
 import { ClientSidebarLink } from './ui/clientSidebarLink';
 import { CiStickyNote } from "react-icons/ci";
 import { GoHome } from "react-icons/go";
-import { CiMail } from "react-icons/ci";
 import { FiMessageSquare } from "react-icons/fi";
 
 const Navbar = () => {

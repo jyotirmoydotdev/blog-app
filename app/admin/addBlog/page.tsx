@@ -7,7 +7,6 @@ import { useForm } from 'react-hook-form'
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -20,12 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import {
-  FontBoldIcon,
-  FontItalicIcon,
-  UnderlineIcon,
-} from "@radix-ui/react-icons"
-import { object, z } from 'zod'
+import { z } from 'zod'
 import { MdOutlineFileUpload } from "react-icons/md";
 import { Input } from '@/components/ui/input1'
 import Image from 'next/image'

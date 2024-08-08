@@ -55,7 +55,7 @@ const BlogCard = (
             )}
             </AnimatePresence>
             <Card>
-                {false?
+                {item.image?
                     <Image src={item.image} alt={item.image} loading="lazy" width={500} height={500} className=" scale-125 h-36 w-full mb-10 bg-cover"/>
                     :
                     <div className="flex  justify-center items-center scale-125 mb-10 h-36">

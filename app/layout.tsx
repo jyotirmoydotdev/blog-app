@@ -5,6 +5,7 @@ import { publication } from "@/data";
 import { Toaster } from "@/components/ui/toaster"
 import { App } from "./app";
 import { BlogProvider } from "@/context/BlogContext";
+import AuthProvider from "@/context/AuthProvider";
 
 const outfit = Outfit({ subsets: ["latin"], weight:["400", "500", "600", "700"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <App>
       <BlogProvider>
+        <AuthProvider>
       <html lang="en">
         <body className={outfit.className}>
           <main>
@@ -30,6 +32,7 @@ export default function RootLayout({
           <Toaster />
         </body>
       </html>
+        </AuthProvider>
       </BlogProvider>
     </App>
   );

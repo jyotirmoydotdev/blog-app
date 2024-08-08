@@ -1,53 +1,44 @@
 "use client";
 import React, { useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "../ui/sidebar";
-import {
-  IconArrowLeft,
-  IconBrandTabler,
-  IconSettings,
-  IconUserBolt,
-} from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { FaPenNib } from "react-icons/fa";
 import { publication } from "@/data";
 
-import { FaPlus } from "react-icons/fa6";
-import { FiEdit } from "react-icons/fi";
-import { HiOutlineMail } from "react-icons/hi";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { GoHome } from "react-icons/go";
+import { CiMail, CiSquarePlus, CiViewList } from "react-icons/ci";
 
 export default function SidebarDemo({children}:{children:React.ReactNode}) {
   const links = [
     {
+      label: "Home",
+      href: "/admin",
+      icon: (
+        <GoHome className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+      ),
+    },
+    {
       label: "Add Blog",
       href: "/admin/addBlog",
       icon: (
-        <FaPlus className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        <CiSquarePlus className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
       label: "Blog List",
       href: "/admin/blogList",
       icon: (
-        <FiEdit className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        <CiViewList className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
       label: "Subscribers",
       href: "/admin/subscribers",
       icon: (
-        <HiOutlineMail className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-    },
-    {
-      label: "Logout",
-      href: "/",
-      icon: (
-        <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        <CiMail className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
   ];
@@ -71,8 +62,8 @@ export default function SidebarDemo({children}:{children:React.ReactNode}) {
           </div>
           <div>
             <Avatar className="h-7 w-7">
-                <AvatarImage src="https://github.com/shadcn.png" width={50} height={50} />
-                <AvatarFallback>CN</AvatarFallback>
+                <AvatarImage src="" width={50} height={50} />
+                <AvatarFallback>{publication.name.at(0)}</AvatarFallback>
             </Avatar>
           </div>
         </SidebarBody>

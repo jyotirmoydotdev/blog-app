@@ -1,10 +1,8 @@
 import { ConnectDB } from "@/lib/config/db"
 import BlogModel from "@/lib/models/BlogModel";
-import mongoose, { Mongoose } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 import { put, del } from '@vercel/blob'
 import { revalidatePath } from "next/cache";
-import axios from "axios";
 
 const LoadDB = async () => {
     await ConnectDB();

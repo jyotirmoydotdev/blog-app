@@ -94,10 +94,7 @@ const page = () => {
       </div>
     </div>
     <div className="mx-5 max-w-[800px] md:mx-auto mt-[-100px] mb-10">
-      {/* <Image className='border-4 bg-gray-200 border-white w-full' src={''} width={500} height={250} alt='' /> */}
-      <div className="bg-white">
-        <Skeleton className='h-52 sm:h-[404px] border-4 border-white'></Skeleton>
-        </div>
+      <Image className='border-4 bg-gray-200 border-white w-full' src={blog.image} width={500} height={250} alt='' />
       <div className="mt-10 blog-content">
         <Markdown>
           {blog.content}
