@@ -1,7 +1,9 @@
 'use client'
 
 import BlogCard from '@/components/ui/blogCard';
+import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { toast } from '@/components/ui/use-toast';
 import { useBlog } from '@/context/BlogContext';
 import { Blog } from '@/lib/helper/types'
 import { useQuery } from '@tanstack/react-query';
@@ -11,13 +13,30 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import { FaArrowRight, FaInstagram } from 'react-icons/fa';
+import { FaArrowRight, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaFacebookF } from "react-icons/fa6";
 import { FaRegCopy } from "react-icons/fa6";
 import Markdown from 'react-markdown';
+import {
+  FacebookShareButton,
+  FacebookShareCount,
+  LinkedinShareButton,
+  TwitterShareButton,
+} from "react-share"
+
+function copyToClipboard(text: string) {
+  navigator.clipboard.writeText(text).then(() => {
+      toast({
+        description:"URL copied to clipboard!"
+      })
+  }).catch(err => {
+      console.error('Failed to copy: ', err);
+  });
+}
 
 const page = () => {
+  const url = window.location.href
   const param = useParams<{id: string}>()
   const {blog , setBlog} = useBlog()
   const [loading, setLoading] = useState<boolean>(false);
@@ -32,7 +51,10 @@ const page = () => {
         }
       })
       return response.data.blogs
-    }
+    },
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    staleTime: Infinity,
   })
 
   useEffect(()=>{
@@ -103,10 +125,18 @@ const page = () => {
       <div className="my-24 text-center">
         <h4 className="text-black font font-semibold my-4">Share this article on social media</h4>
         <div className="flex gap-10 justify-center">
-          <FaFacebookF size={20} />
-          <FaXTwitter size={20} />
-          <FaInstagram size={20} />
-          <FaRegCopy size={20} />
+          <FacebookShareButton url={url}>
+            <FaFacebookF size={20}/>
+          </FacebookShareButton>
+          <TwitterShareButton url={url}>
+            <FaXTwitter size={20}/>
+          </TwitterShareButton>
+          <LinkedinShareButton url={url}>
+            <FaLinkedin size={20}/>
+          </LinkedinShareButton>
+          <Button onClick={(e)=>copyToClipboard(url)} variant={'ghost'}>
+            <FaRegCopy size={20}/>
+          </Button>
         </div>
       </div>
     </div>
