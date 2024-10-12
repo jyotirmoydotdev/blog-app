@@ -24,14 +24,14 @@ export default function RootLayout({
     <App>
       <BlogProvider>
         <AuthProvider>
-      <html lang="en">
-        <body className={outfit.className}>
-          <main>
-              {children}
-          </main>
-          <Toaster />
-        </body>
-      </html>
+          <html lang="en">
+            <body className={outfit.className}>
+              <main>
+                  {children}
+              </main>
+              <Toaster />
+            </body>
+          </html>
         </AuthProvider>
       </BlogProvider>
     </App>

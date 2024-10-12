@@ -20,7 +20,6 @@ import { FaRegCopy } from "react-icons/fa6";
 import Markdown from 'react-markdown';
 import {
   FacebookShareButton,
-  FacebookShareCount,
   LinkedinShareButton,
   TwitterShareButton,
 } from "react-share"
